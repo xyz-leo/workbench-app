@@ -1,0 +1,58 @@
+# ======================
+# Python
+# ======================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.env
+.venv/
+venv/
+ENV/
+
+# ======================
+# Flask
+# ======================
+instance/
+.flaskenv
+
+# ======================
+# OS / Editor
+# ======================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# ======================
+# Logs
+# ======================
+*.log
+
+# ======================
+# Build / Distribution
+# ======================
+build/
+dist/
+*.spec
+
+# ======================
+# Data (local user data)
+# ======================
+data/users/*
+!data/users/.gitkeep
+
+# ======================
+# Temporary uploads / outputs
+# ======================
+temp/
+uploads/
+outputs/
+
+# ======================
+# Frontend cache (if any)
+# ======================
+node_modules/
