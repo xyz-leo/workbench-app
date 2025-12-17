@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 from pathlib import Path
+import sys
 
 # -----------------------------
 # Base directories
@@ -10,6 +11,10 @@ PROJECT_ROOT = BASE_DIR.parent                     # workbench-app/
 
 DATA_DIR = PROJECT_ROOT / "data"
 TEMP_DIR = PROJECT_ROOT / "temp"
+
+sys.path.append(str(PROJECT_ROOT))
+from backend.pdf.routes import pdf_bp
+
 
 # Ensure runtime directories exist
 DATA_DIR.mkdir(exist_ok=True)
@@ -24,6 +29,11 @@ app = Flask(
     template_folder=BASE_DIR / "templates",
     static_folder=BASE_DIR / "static",
 )
+
+# -----------------------------
+# Register blueprints
+# -----------------------------
+app.register_blueprint(pdf_bp)
 
 # -----------------------------
 # Routes
