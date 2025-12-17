@@ -3,8 +3,7 @@
    ============================= */
 
 :root {
-    --font-family: system-ui, -apple-system, BlinkMacSystemFont,
-                   "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, sans-serif;
 
     --radius-sm: 8px;
     --radius-md: 14px;
@@ -143,6 +142,21 @@ h2 {
 }
 
 /* =============================
+   Header title hover
+   ============================= */
+.app-title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    cursor: pointer;
+}
+
+.app-title:hover {
+    color: var(--text-muted);  
+}
+
+/* =============================
    Buttons (Unified)
    ============================= */
 
@@ -257,3 +271,35 @@ h2 {
     transform: scale(0.95);
 }
 
+/* =============================
+   Input
+   ============================= */
+
+/* Input file */
+input[type="file"] {
+    font-family: var(--font-family);
+    padding: 0.4rem 0.5rem; /* aumenta a altura do campo */
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+/* Input file button */
+input[type="file"]::file-selector-button {
+    background-color: var(--file-button-bg);
+    border: 1px solid var(--file-button-border);
+    color: var(--file-button-color);
+    padding: var(--file-button-padding);
+    border-radius: var(--file-button-radius);
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+                transform var(--transition-fast);
+}
+
+input[type="file"]::file-selector-button:hover {
+    background-color: var(--file-button-hover-bg);
+    transform: translateY(-1px);
+}

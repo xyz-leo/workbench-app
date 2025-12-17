@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <section class="section">
+        <h1>To-Do</h1>
+        <p class="subtitle">Manage your tasks locally in JSON format.</p>
+    </section>
+
+    <section class="section">
+        <div class="panel">
+            <p>Add tasks below:</p>
+            <input type="text" id="todo-input" placeholder="New task" class="button">
+            <button id="add-todo" class="button">Add Task</button>
+
+            <ul id="todo-list">
+            </ul>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
+

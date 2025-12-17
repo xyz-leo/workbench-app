@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Workbench</title>
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='assets/icons/favicon.png') }}">
 
     <!-- Main stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -13,7 +14,7 @@
 
     <header class="app-header">
         <div class="header-left">
-            <span class="app-title">Workbench</span>
+	    <a href="{{ url_for('index') }}" class="app-title">Workbench</a>
         </div>
 
         <div class="header-right">

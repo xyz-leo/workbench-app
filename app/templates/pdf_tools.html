@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <section class="section">
+        <h1>PDF Tools</h1>
+        <p class="subtitle">Merge, split, and compress PDF files locally.</p>
+    </section>
+
+    <section class="section">
+        <div class="panel">
+            <p>Select PDF files:</p>
+            <input type="file" id="pdf-files" multiple class="button">
+            <button id="merge-pdf" class="button">Merge PDFs</button>
+            <button id="split-pdf" class="button">Split PDF</button>
+            <button id="compress-pdf" class="button">Compress PDF</button>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
+

@@ -152,8 +152,8 @@ workbench/
 │       ├── base.html              # Base layout (header, footer, blocks)
 │       ├── index.html             # Main menu / feature selection
 │       ├── todo.html              # To-do feature UI
-│       ├── pdf.html               # PDF tools UI
-│       └── image.html             # Image tools UI
+│       ├── pdf_tools.html               # PDF tools UI
+│       └── image_tools.html             # Image tools UI
 │
 ├── backend/
 │   ├── __init__.py                # Backend package initializer

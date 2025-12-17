@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+    <section class="section">
+        <h1>Image Tools</h1>
+        <p class="subtitle">Resize and apply simple filters to images.</p>
+    </section>
+
+    <section class="section">
+        <div class="panel">
+            <p>Select image files:</p>
+            <input type="file" id="image-files" multiple class="button">
+            <button id="resize-image" class="button">Resize</button>
+            <button id="apply-filter" class="button">Apply Filter</button>
+        </div>
+    </section>
+
+</div>
+{% endblock %}
+

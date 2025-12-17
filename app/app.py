@@ -33,6 +33,18 @@ app = Flask(
 def index():
     return render_template("index.html")
 
+@app.route("/todo")
+def todo():
+    return render_template("todo.html")
+
+@app.route("/pdf-tools")
+def pdf_tools():
+    return render_template("pdf_tools.html")
+
+@app.route("/image-tools")
+def image_tools():
+    return render_template("image_tools.html")
+
 # -----------------------------
 # Entry point
 # -----------------------------
