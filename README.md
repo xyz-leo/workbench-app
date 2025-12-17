@@ -140,59 +140,52 @@ When executed, the server starts locally and can be accessed via the browser at 
 workbench/
 │
 ├── app/
-│   ├── app.py              # Flask entry point
-│   ├── config.py           # App configuration
+│   ├── app.py                     # Flask application entry point
+│   ├── config.py                  # App-level configuration
 │   │
-│   ├── backend/            # Backend application logic
-│   │   ├── __init__.py
-│   │   │
-│   │   ├── todo/           # To-do feature
-│   │   │   ├── routes.py   # HTTP endpoints
-│   │   │   ├── service.py  # Business logic
-│   │   │   └── storage.py  # JSON persistence
-│   │   │
-│   │   ├── pdf/            # PDF tools
-│   │   │   ├── routes.py   # PDF endpoints
-│   │   │   └── service.py  # PDF processing
-│   │   │
-│   │   ├── image/          # Image tools
-│   │   │   ├── routes.py   # Image endpoints
-│   │   │   └── service.py  # Image processing
-│   │   │
-│   │   └── utils/          # Shared helpers
-│   │       ├── file_lock.py # Safe file writes
-│   │       └── paths.py    # Path resolution
+│   ├── static/                    # Static files served by Flask
+│   │   ├── assets/                # Icons and visual assets
+│   │   ├── css/                   # Global application styles
+│   │   └── js/                    # Minimal frontend logic
+│   │
+│   └── templates/                 # Jinja2 HTML templates
+│       ├── base.html              # Base layout (header, footer, blocks)
+│       ├── index.html             # Main menu / feature selection
+│       ├── todo.html              # To-do feature UI
+│       ├── pdf.html               # PDF tools UI
+│       └── image.html             # Image tools UI
+│
+├── backend/
+│   ├── __init__.py                # Backend package initializer
+│   │
+│   ├── todo/                      # To-do feature backend
+│   │   ├── routes.py              # HTTP API endpoints
+│   │   ├── service.py             # Business logic
+│   │   └── storage.py             # JSON persistence layer
+│   │
+│   ├── pdf/                       # PDF tools backend
+│   │   ├── routes.py              # PDF endpoints
+│   │   └── service.py             # PDF processing logic
+│   │
+│   ├── image/                     # Image tools backend
+│   │   ├── routes.py              # Image endpoints
+│   │   └── service.py             # Image processing logic
+│   │
+│   └── utils/                     # Shared backend utilities
+│       ├── file_lock.py           # Safe concurrent file writes
+│       └── paths.py               # Centralized path resolution
 │
 ├── data/
-│   ├── users/              # User data storage
-│   │   └── .gitkeep
+│   └── users/                     # User-specific JSON data storage
 │
-├── temp/
-│   └── .gitkeep            # Temporary working files
-│
-├── static/
-│   ├── css/
-│   │   └── main.css        # Global styles
-│   │
-│   ├── js/
-│   │   └── main.js         # Minimal frontend logic
-│   │
-│   └── assets/
-│       └── icons/          # UI icons
-│
-├── templates/
-│   ├── base.html           # Base layout
-│   ├── index.html          # Main menu
-│   ├── todo.html           # To-do UI
-│   ├── pdf.html            # PDF tools UI
-│   └── image.html          # Image tools UI
+├── temp/                          # Temporary working files
 │
 ├── scripts/
-│   └── run_local.py        # Local run helper
+│   └── run_local.py               # Local development runner
 │
-├── requirements.txt        # Python dependencies
-├── README.md               # Project documentation
-└── .gitignore              # Git ignore rules
+├── requirements.txt               # Python dependencies
+├── README.md                      # Project documentation
+└── LICENSE                        # License file
 ```
 ---
 

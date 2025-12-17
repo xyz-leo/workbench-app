@@ -1,0 +1,259 @@
+/* =============================
+   Design System
+   ============================= */
+
+:root {
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont,
+                   "Segoe UI", Roboto, Ubuntu, sans-serif;
+
+    --radius-sm: 8px;
+    --radius-md: 14px;
+
+    --transition-fast: 0.15s ease;
+}
+
+/* =============================
+   Themes
+   ============================= */
+
+[data-theme="dark"] {
+    --bg-main: #0b0c0f;
+    --bg-surface: #14161a;
+    --bg-elevated: #1b1e24;
+    --bg-hover: #20232a;
+
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+
+    --border-color: #262a33;
+    --accent: #10a37f;
+}
+
+[data-theme="light"] {
+    --bg-main: #f6f7f9;
+    --bg-surface: #ffffff;
+    --bg-elevated: #f1f3f6;
+    --bg-hover: #eceef2;
+
+    --text-main: #111827;
+    --text-muted: #6b7280;
+
+    --border-color: #e5e7eb;
+    --accent: #10a37f;
+}
+
+/* =============================
+   Reset
+   ============================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    line-height: 1.6;
+}
+
+/* REMOVE LINK DEFAULT */
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* =============================
+   Header
+   ============================= */
+
+.app-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background-color: var(--bg-surface);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.app-title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
+
+/* =============================
+   Main / Footer
+   ============================= */
+
+.app-main {
+    flex: 1;
+    padding: 2.5rem 1.5rem;
+}
+
+.app-footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* =============================
+   Layout
+   ============================= */
+
+.container {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.section {
+    margin-bottom: 3rem;
+}
+
+/* =============================
+   Typography
+   ============================= */
+
+h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* =============================
+   Buttons (Unified)
+   ============================= */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.9rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: background-color var(--transition-fast),
+                border-color var(--transition-fast),
+                transform var(--transition-fast);
+}
+
+.button:hover {
+    background-color: var(--bg-hover);
+    transform: translateY(-1px);
+}
+
+/* =============================
+   Cards / Hero Buttons
+   ============================= */
+
+.button-hero {
+    display: block;
+    width: 100%;
+    padding: 1.75rem;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    transition: background-color var(--transition-fast),
+                transform var(--transition-fast),
+                border-color var(--transition-fast);
+}
+
+.button-hero:hover {
+    background-color: var(--bg-hover);
+    transform: translateY(-2px);
+}
+
+.button-hero h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.button-hero p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}
+
+/* =============================
+   Grid
+   ============================= */
+
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.grid-3 {
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* =============================
+   Panels
+   ============================= */
+
+.panel {
+    background-color: var(--bg-surface);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    padding: 1.5rem;
+}
+
+#theme-toggle {
+    width: 36px;
+    height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+
+    font-size: 0.9rem;
+    line-height: 1;
+    color: var(--text-main);
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+#theme-toggle:hover {
+    background-color: var(--bg-hover);
+    transform: translateY(-1px);
+}
+
+#theme-toggle:active {
+    transform: scale(0.95);
+}
+

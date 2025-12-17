@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Workbench</title>
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="header-left">
+            <span class="app-title">Workbench</span>
+        </div>
+
+        <div class="header-right">
+            <button id="theme-toggle" aria-label="Toggle theme">
+                ☾
+            </button>
+        </div>
+    </header>
+
+    <main class="app-main">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="app-footer">
+        <small>Simple local-first utility app</small>
+    </footer>
+
+    <!-- Main script -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
