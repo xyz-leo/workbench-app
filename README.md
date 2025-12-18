@@ -171,10 +171,12 @@ workbench/
 │   │
 │   ├── image/                     # Image tools backend
 │   │   ├── routes.py              # Image endpoints
-│   │   └── service.py             # Image processing logic
+│   │   ├── resize_service.py              # Image endpoints
+│   │   └── filter_service.py             # Image processing logic
 │   │
 │   └── utils/                     # Shared backend utilities
 │       ├── file_lock.py           # Safe concurrent file writes
+│       ├── temp_cleanup.py           # Clean temp folder after request
 │       └── paths.py               # Centralized path resolution
 │
 ├── data/
