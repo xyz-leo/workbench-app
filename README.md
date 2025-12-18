@@ -107,8 +107,8 @@ cd workbench-app
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-python app/app.py
 ```
+After, you can run the app with `python app/app.py`
 
 Once running, open your browser and access:
 http://127.0.0.1:5000
@@ -116,10 +116,7 @@ http://127.0.0.1:5000
 ### Option 2 — Package as an Executable (optional)
 Workbench can be packaged as a standalone executable using Pyinstaller.
 
-Requirements:
-- Python
-- `pip`
-- PyInstaller
+**The steps from the option 1 are still required (venv with requirements.txt).**
 
 Install the PyInstaller:
 ```bash
