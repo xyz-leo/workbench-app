@@ -102,6 +102,7 @@ Steps:
 ```bash
 git clone https://github.com/xyz-leo/workbench-app.git
 cd workbench-app
+python -m venv venv
 pip install -r requirements.txt
 python app/app.py
 ```
