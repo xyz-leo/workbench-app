@@ -103,6 +103,7 @@ Steps:
 git clone https://github.com/xyz-leo/workbench-app.git
 cd workbench-app
 python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 python app/app.py
 ```
