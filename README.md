@@ -31,13 +31,15 @@ All data is processed locally, and all state is stored in plain JSON files. No c
 ### PDF Tools
 - Merge PDFs
 - Split PDFs
-- Basic size reduction (image recompression, metadata cleanup)
 - All processing done locally
+- Compress PDFs (image recompression, metadata cleanup)
+
+⚠️ **Disclaimer:** In rare cases, some pages may appear blurred after compression. Please review the resulting PDF carefully before use.
 
 ### Image Tools
 - Image resizing (custom sizes and presets)
-- Black and white conversion
-- Local image processing
+- Filter addition (B&W, Sepia, Invert colors, Blur)
+- All processing done locally
 
 ---
 
@@ -154,8 +156,8 @@ workbench/
 │       ├── base.html              # Base layout (header, footer, blocks)
 │       ├── index.html             # Main menu / feature selection
 │       ├── todo.html              # To-do feature UI
-│       ├── pdf_tools.html               # PDF tools UI
-│       └── image_tools.html             # Image tools UI
+│       ├── pdf_tools.html         # PDF tools UI
+│       └── image_tools.html       # Image tools UI
 │
 ├── backend/
 │   ├── __init__.py                # Backend package initializer
@@ -171,12 +173,12 @@ workbench/
 │   │
 │   ├── image/                     # Image tools backend
 │   │   ├── routes.py              # Image endpoints
-│   │   ├── resize_service.py              # Image endpoints
-│   │   └── filter_service.py             # Image processing logic
+│   │   ├── resize_service.py      # Image endpoints
+│   │   └── filter_service.py      # Image processing logic
 │   │
 │   └── utils/                     # Shared backend utilities
 │       ├── file_lock.py           # Safe concurrent file writes
-│       ├── temp_cleanup.py           # Clean temp folder after request
+│       ├── temp_cleanup.py        # Clean temp folder after request
 │       └── paths.py               # Centralized path resolution
 │
 ├── data/

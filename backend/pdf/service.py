@@ -1,6 +1,9 @@
 from pathlib import Path
 from pypdf import PdfReader, PdfWriter
 
+from PIL import Image
+import io
+
 
 def merge_pdfs(file_paths, output_path):
     """
@@ -17,7 +20,7 @@ def merge_pdfs(file_paths, output_path):
         for page in reader.pages:
             writer.add_page(page)
 
-    # Salva PDF mesclado
+    # Save merged PDF
     with open(output_path, "wb") as f:
         writer.write(f)
 
@@ -52,4 +55,64 @@ def split_pdf(file_path, output_dir):
         output_files.append(output_path)
 
     return output_files
+
+
+def compress_pdf(input_path: Path, output_path: Path, image_quality: int = 20, max_dim: int = 1200):
+    """
+    Compress a PDF by recompressing images inside it using Pillow (JPEG).
+    
+    Args:
+        input_path (Path): Original PDF path.
+        output_path (Path): Path to save compressed PDF.
+        image_quality (int): JPEG quality for images (1-100).
+        max_dim (int): Maximum dimension (width/height) for images.
+    """
+    reader = PdfReader(str(input_path))
+    writer = PdfWriter()
+    writer._compress = True
+
+    for page_num, page in enumerate(reader.pages, start=1):
+        # Iterate over images in the page (if any)
+        if "/XObject" in page["/Resources"]:
+            xobjects = page["/Resources"]["/XObject"].get_object()
+            for name in list(xobjects.keys()):
+                xobj = xobjects[name]
+                if xobj["/Subtype"] == "/Image":
+                    try:
+                        # Extract image data
+                        data = xobj.get_data()
+                        mode = "RGB"
+                        if xobj["/ColorSpace"] == "/DeviceCMYK":
+                            mode = "CMYK"
+                        elif xobj["/ColorSpace"] == "/DeviceGray":
+                            mode = "L"
+
+                        img = Image.open(io.BytesIO(data)).convert(mode)
+
+                        # Resize if larger than max_dim
+                        if img.width > max_dim or img.height > max_dim:
+                            img.thumbnail((max_dim, max_dim))
+
+                        # Recompress image
+                        img_bytes = io.BytesIO()
+                        img.save(img_bytes, format="JPEG", quality=image_quality, optimize=True)
+                        img_bytes.seek(0)
+
+                        # Replace image in PDF
+                        xobj._data = img_bytes.read()
+                    except Exception as e:
+                        # If something fails, keep original image
+                        print(f"Warning: failed to compress image on page {page_num}: {e}")
+                        continue
+        
+        writer.add_page(page)
+
+    # Remove all metadata to reduce size
+    writer.add_metadata({})
+
+    # Save compressed PDF
+    with open(output_path, "wb") as f:
+        writer.write(f)
+
+    return output_path
 
