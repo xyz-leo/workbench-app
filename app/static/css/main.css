@@ -153,7 +153,7 @@ h2 {
 }
 
 .app-title:hover {
-    color: var(--text-muted);  
+    color: var(--accent);  
 }
 
 /* =============================
@@ -238,6 +238,11 @@ h2 {
     padding: 1.5rem;
 }
 
+/* Preset group spacing */
+.panel p {
+    margin-bottom: 0.5rem;
+}
+
 #theme-toggle {
     width: 36px;
     height: 36px;
@@ -303,3 +308,179 @@ input[type="file"]::file-selector-button:hover {
     background-color: var(--file-button-hover-bg);
     transform: translateY(-1px);
 }
+
+/* =============================
+   Number Input (Custom Size)
+   ============================= */
+
+input[type="number"] {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+
+    transition:
+        border-color var(--transition-fast),
+        background-color var(--transition-fast);
+
+    -moz-appearance: textfield;
+}
+
+/* Remove number arrows (Chrome, Edge, Safari) */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* =============================
+   Radio (Resize Presets)
+   ============================= */
+
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-surface);
+
+    cursor: pointer;
+    position: relative;
+
+    transition:
+        border-color var(--transition-fast),
+        background-color var(--transition-fast);
+}
+
+input[type="radio"]:checked {
+    border-color: var(--accent);
+    background-color: var(--accent);
+}
+
+input[type="radio"]:checked::after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+
+    background-color: var(--bg-surface);
+}
+
+/* Radio label spacing */
+label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    font-size: 0.9rem;
+    color: var(--text-main);
+
+    cursor: pointer;
+    margin-bottom: 0.35rem;
+}
+
+/* =============================
+   Checkbox
+   ============================= */
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+/* Reset checkbox */
+.filter-option input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border: 1px solid #555;
+    border-radius: 3px;
+    background: transparent;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Checked = accent fill */
+.filter-option input[type="checkbox"]:checked {
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* =============================
+   Range
+   ============================= */
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+
+    width: 30%;
+    height: 5px;
+
+    background: #444;
+    border-radius: 2px;
+    outline: none;
+}
+
+/* Range Thumb */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+
+    background: var(--accent);
+    cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+
+    background: var(--accent);
+    cursor: pointer;
+    border: none;
+}
+
+/* =============================
+   Details
+   ============================= */
+details summary {
+    list-style: none;
+    cursor: pointer;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary h2 {
+    display: inline-block;
+}
+
+details[open] summary {
+    margin-bottom: 1rem;
+}
+

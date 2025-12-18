@@ -1,22 +1,127 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="container">
 
-    <section class="section">
-        <h1>Image Tools</h1>
-        <p class="subtitle">Resize and apply simple filters to images.</p>
-    </section>
+<section class="section">
+    <h1>Image Tools</h1>
+    <p class="subtitle">Resize images locally using simple presets or custom dimensions.</p>
+</section>
 
-    <section class="section">
-        <div class="panel">
-            <p>Select image files:</p>
-            <input type="file" id="image-files" multiple class="button">
-            <button id="resize-image" class="button">Resize</button>
-            <button id="apply-filter" class="button">Apply Filter</button>
-        </div>
-    </section>
+<!-- File selection -->
+<section class="section">
+    <div class="panel">
+        <p>Select up to <strong>10 images</strong>:</p>
+        <input type="file" id="image-files" multiple accept="image/*">
+        <p class="subtitle" style="margin-top: 0.5rem;">
+            Images are processed locally. Large images may take longer.
+        </p>
+    </div>
+</section>
 
+<!-- Resize tools -->
+<section class="section">
+    <div class="panel">
+
+        <details>
+            <summary>
+                <h2>Resize</h2>
+            </summary>
+
+            <!-- Presets -->
+            <div style="margin: 1rem 0;">
+                <p>Presets:</p>
+                <label>
+                    <input type="radio" name="resize-preset" value="1920x1080">
+                    1920 × 1080 (Full HD)
+                </label><br>
+                <label>
+                    <input type="radio" name="resize-preset" value="1280x720">
+                    1280 × 720 (HD)
+                </label><br>
+                <label>
+                    <input type="radio" name="resize-preset" value="1080x1080">
+                    1080 × 1080 (Square)
+                </label><br>
+                <label>
+                    <input type="radio" name="resize-preset" value="custom">
+                    Custom size
+                </label>
+            </div>
+
+            <!-- Custom size -->
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+                <input type="number" id="custom-width" placeholder="Width" min="1">
+                <input type="number" id="custom-height" placeholder="Height" min="1">
+            </div>
+
+            <button id="resize-image" class="button">Resize Images</button>
+
+        </details>
+
+    </div>
+
+</section>
+<!-- Filters tools -->
+<section class="section">
+    <div class="panel">
+
+        <details>
+            <summary>
+                <h2>Filters</h2>
+            </summary>
+
+            <!-- Filter options -->
+            <div style="margin: 1rem 0;">
+                <p>Filters:</p>
+
+                <label class=filter-option>
+                    <input type="checkbox" name="filter" value="grayscale">
+                    Grayscale
+                </label><br>
+
+                <label class=filter-option>
+                    <input type="checkbox" name="filter" value="sepia">
+                    Sepia
+                </label><br>
+
+                <label class=filter-option>
+                    <input type="checkbox" name="filter" value="invert">
+                    Invert colors
+                </label><br>
+
+                <label class=filter-option>
+                    <input type="checkbox" name="filter" value="blur">
+                    Blur
+                </label>
+            </div>
+
+            <!-- Filter intensity -->
+            <div style="margin-bottom: 1rem;">
+                <label for="filter-intensity">
+                    Intensity:
+                </label>
+                <input
+                    type="range"
+                    id="filter-intensity"
+                    min="0"
+                    max="100"
+                    value="50"
+                >
+            </div>
+
+            <button id="apply-filters" class="button">
+                Apply Filters
+            </button>
+
+        </details>
+
+    </div>
+</section>
 </div>
 {% endblock %}
 
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/image_tools.js') }}"></script>
+{% endblock %}

@@ -6,15 +6,15 @@ import sys
 # Base directories
 # -----------------------------
 
-BASE_DIR = Path(__file__).resolve().parent          # app/
-PROJECT_ROOT = BASE_DIR.parent                     # workbench-app/
+BASE_DIR = Path(__file__).resolve().parent   # app/
+PROJECT_ROOT = BASE_DIR.parent               # workbench-app/
 
 DATA_DIR = PROJECT_ROOT / "data"
 TEMP_DIR = PROJECT_ROOT / "temp"
 
 sys.path.append(str(PROJECT_ROOT))
 from backend.pdf.routes import pdf_bp
-
+from backend.image.routes import image_bp
 
 # Ensure runtime directories exist
 DATA_DIR.mkdir(exist_ok=True)
@@ -33,7 +33,8 @@ app = Flask(
 # -----------------------------
 # Register blueprints
 # -----------------------------
-app.register_blueprint(pdf_bp)
+app.register_blueprint(pdf_bp)    # PDF processing blueprint
+app.register_blueprint(image_bp)  # Image processing blueprint
 
 # -----------------------------
 # Routes
