@@ -6,16 +6,18 @@ import shutil
 
 def cleanup_temp_dir(path: Path) -> None:
     """
-    Remove a temporary working directory and all its contents.
-
-    This should be called after a response using files inside this directory
-    has been created (e.g. send_file).
+    Remove all contents of a temporary directory except `.gitkeep`.
     """
     try:
         if path.exists():
-            shutil.rmtree(path)
+            for item in path.iterdir():
+                if item.name == ".gitkeep":
+                    continue
+                if item.is_dir():
+                    shutil.rmtree(item)
+                else:
+                    item.unlink()
     except Exception as e:
         print(e)
-        # Intentionally silent: cleanup failure should not
-        # break the main application flow
+        # Silent failure
         pass

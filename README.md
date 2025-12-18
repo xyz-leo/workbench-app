@@ -124,9 +124,9 @@ Install the PyInstaller:
 pip install pyinstaller
 ```
 
-Build the executable:
+To build the executable, run it from the project root:
 ```
-pyinstaller --noconsole --onefile app/app.py
+pyinstaller scripts/app.spec
 ```
 
 The generated executable will be available in the dist/ directory.
@@ -185,6 +185,7 @@ workbench/
 ├── temp/                          # Temporary working files
 │
 ├── scripts/
+│   ├── app.spec                   # Pyinstaller script to build the app
 │   └── run_local.py               # Local development runner
 │
 ├── requirements.txt               # Python dependencies
