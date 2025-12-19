@@ -44,7 +44,7 @@ dist/
 # ======================
 data/users/*
 !data/users/.gitkeep
-
+data/todo.json
 # ======================
 # Temporary uploads / outputs
 # ======================

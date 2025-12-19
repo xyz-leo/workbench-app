@@ -22,11 +22,28 @@ All data is processed locally, and all state is stored in plain JSON files. No c
 
 ## Features
 
-### To-Do
+### To-Do List
 - Task management with title and description
 - Workspace-based organization
 - JSON-based persistence
-- Import/export tasks file
+
+The To-Do List module is a fully functional frontend-backend component of the Workbench app, designed to help users manage tasks organized by workspaces. It allows users to create multiple workspaces, add, edit, and delete tasks within each workspace, and maintain a structured overview of their work.  
+
+On the frontend, the module is implemented using a single HTML template (`todo.html`) styled consistently with the main site theme. The layout follows a clear hierarchy: at the top, users can select the current workspace or create/delete workspaces using an interactive panel. Below the workspace selector, there is an expandable "Add Task" panel, allowing users to enter a task title and description.
+
+Tasks are displayed in a collapsible `<details>` format, showing only the title by default. Clicking a task expands it to reveal its description and a "Delete" button. Each task is associated with the currently selected workspace, and task operations are dynamically updated using JavaScript.  
+
+The frontend state mirrors the backend JSON storage. Workspaces and tasks are persisted in a `todo.json` file located in the `data` directory. All CRUD operations (create, read, update, delete) are handled via API endpoints in Flask, providing a seamless and reactive experience. Additionally, the module uses `localStorage` to remember the last selected workspace, ensuring continuity when the user reloads the page or returns later.  
+
+Key features include:
+
+- Multiple workspace management (create, delete, switch)
+- Expandable Add Task panel with title and description fields
+- Collapsible task list per workspace
+- Task deletion with confirmation prompts
+- Persistent backend storage in JSON
+- Frontend state synchronization with backend via API
+- Last workspace selection remembered using browser localStorage
 
 ### PDF Tools
 - Merge PDFs
