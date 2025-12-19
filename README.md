@@ -6,6 +6,8 @@ It runs as a local web app using a Python backend and a minimal HTML/CSS fronten
 
 The project focuses on simplicity, clarity, and no overengineering.
 
+<img width="480" height="850" alt="Workbench" src="https://github.com/user-attachments/assets/9f6021f2-659c-48e1-beb2-47aafcb1f36f" />
+
 ---
 
 ## Purpose
@@ -44,6 +46,8 @@ Key features include:
 - Persistent backend storage in JSON
 - Frontend state synchronization with backend via API
 - Last workspace selection remembered using browser localStorage
+
+<img width="488" height="855" alt="To do" src="https://github.com/user-attachments/assets/4a62d57e-f9a9-404e-820f-b40fb8983045" />
 
 ### PDF Tools
 - Merge PDFs
