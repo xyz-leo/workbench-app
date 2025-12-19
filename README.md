@@ -6,7 +6,7 @@ It runs as a local web app using a Python backend and a minimal HTML/CSS fronten
 
 The project focuses on simplicity, clarity, and no overengineering.
 
-<img width="480" height="850" alt="Workbench" src="https://github.com/user-attachments/assets/9f6021f2-659c-48e1-beb2-47aafcb1f36f" />
+<img width="346" height="536" alt="Workbench Tools" src="https://github.com/user-attachments/assets/76e0c227-a13e-4e17-91a7-a2d50e30de57" />
 
 ---
 
@@ -47,7 +47,7 @@ Key features include:
 - Frontend state synchronization with backend via API
 - Last workspace selection remembered using browser localStorage
 
-<img width="488" height="855" alt="To do" src="https://github.com/user-attachments/assets/4a62d57e-f9a9-404e-820f-b40fb8983045" />
+<img width="346" height="581" alt="Workbench To do list" src="https://github.com/user-attachments/assets/a4e78727-5853-4f4e-8c80-7d2f5a84fbc2" />
 
 ### PDF Tools
 - Merge PDFs
