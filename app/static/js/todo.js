@@ -20,6 +20,9 @@ const addTaskBtn = document.getElementById("add-task-btn");
 // ==============================
 async function fetchJSON(url, options = {}) {
     const res = await fetch(url, options);
+    if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+    }
     return res.json();
 }
 
@@ -221,49 +224,49 @@ function openCreateTaskModal() {
 
 addTaskBtn.addEventListener("click", openCreateTaskModal);
 
+
 // ==============================
 // Create/Edit Task Modal
 // ==============================
 
 // References to modal elements
-const editModal = document.getElementById("edit-task-modal");
-const editTitleInput = document.getElementById("edit-task-title");
-const editDescInput = document.getElementById("edit-task-desc");
-const editSaveBtn = document.getElementById("save-edit");
-const editCancelBtn = document.getElementById("cancel-edit");
+const taskModal = document.getElementById("task-modal");
+const taskModalTitleInput = document.getElementById("task-modal-title");
+const taskModalDescInput = document.getElementById("task-modal-desc");
+const taskModalSaveBtn = document.getElementById("task-modal-save");
+const taskModalCancelBtn = document.getElementById("task-modal-cancel");
 
-// Open the modal with task data
-let taskModalMode = "edit";
+// Modal state
+let taskModalMode = "edit"; // "edit" | "create"
 let currentEditIndex = null;
 
 function openTaskModal({ mode, task = null, index = null }) {
     taskModalMode = mode;
     currentEditIndex = mode === "edit" ? index : null;
 
-    editTitleInput.value = task ? task.title : "";
-    editDescInput.value = task ? task.description : "";
+    taskModalTitleInput.value = task ? task.title : "";
+    taskModalDescInput.value = task ? task.description : "";
 
-    editModal.querySelector("h2").textContent =
+    taskModal.querySelector("h2").textContent =
         mode === "edit" ? "Edit Task" : "Create Task";
 
-    editModal.classList.add("show");
+    taskModal.classList.add("show");
 }
 
-// Close the modal
-function closeModal() {
+function closeTaskModal() {
     currentEditIndex = null;
     taskModalMode = "edit";
-    editModal.classList.remove("show");
+    taskModal.classList.remove("show");
 }
 
 function startEditTask(task, index) {
-    openTaskModal({mode: "edit", task, index});
+    openTaskModal({ mode: "edit", task, index });
 }
 
-// Save changes
-editSaveBtn.addEventListener("click", async () => {
-    const title = editTitleInput.value.trim();
-    const description = editDescInput.value.trim();
+// Save (create or edit)
+taskModalSaveBtn.addEventListener("click", async () => {
+    const title = taskModalTitleInput.value.trim();
+    const description = taskModalDescInput.value.trim();
 
     if (!title) {
         showAlert("Task title is required.");
@@ -273,7 +276,6 @@ editSaveBtn.addEventListener("click", async () => {
     let res;
 
     if (taskModalMode === "edit") {
-        // EDIT (PUT)
         res = await fetchJSON(
             `/api/todo/tasks/${encodeURIComponent(currentWorkspace)}/${currentEditIndex}`,
             {
@@ -283,7 +285,6 @@ editSaveBtn.addEventListener("click", async () => {
             }
         );
     } else {
-        // CREATE (POST)
         res = await fetchJSON(
             `/api/todo/tasks/${encodeURIComponent(currentWorkspace)}`,
             {
@@ -300,11 +301,10 @@ editSaveBtn.addEventListener("click", async () => {
     }
 
     loadTasks();
-    closeModal();
+    closeTaskModal();
 });
 
-// Cancel editing
-editCancelBtn.addEventListener("click", closeModal);
+taskModalCancelBtn.addEventListener("click", closeTaskModal);
 
 
 // ==============================
