@@ -641,3 +641,46 @@ details[open] summary {
 #tasks-container {
     margin-top: 1.25rem;
 }
+
+/* =============================
+   Shutdown Button
+   ============================= */
+
+#shutdown-btn {
+    width: 36px;
+    height: 36px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--bg-elevated);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1;
+
+    color: var(--text-muted);
+
+    cursor: pointer;
+
+    transition:
+        background-color var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast),
+        transform var(--transition-fast);
+}
+
+#shutdown-btn:hover {
+    background-color: rgba(220, 38, 38, 0.12); /* red hint */
+    border-color: rgba(220, 38, 38, 0.45);
+    color: #ef4444; /* tailwind red-500 */
+    transform: translateY(-1px);
+}
+
+#shutdown-btn:active {
+    transform: scale(0.95);
+}
+

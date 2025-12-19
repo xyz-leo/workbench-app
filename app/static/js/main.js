@@ -42,3 +42,25 @@
         toggleButton.addEventListener("click", toggleTheme);
     }
 })();
+
+// Shutdown server button
+document.getElementById("shutdown-btn").addEventListener("click", () => {
+    const msg = document.createElement("div");
+    msg.textContent = "Application closed. You may now close this tab.";
+    msg.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: #111;
+        color: #10a37f;
+        padding: 20px;
+        text-align: center;
+        z-index: 9999;
+        font-family: sans-serif;
+        font-size: 22px;
+    `;
+    document.body.appendChild(msg);
+
+    fetch("/shutdown", { method: "POST" });
+});

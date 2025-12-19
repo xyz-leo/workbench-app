@@ -1,6 +1,10 @@
 from flask import Flask, render_template
 from pathlib import Path
 import sys
+import os
+import signal
+import threading
+import webbrowser
 
 # -----------------------------
 # Base directories
@@ -57,14 +61,28 @@ def pdf_tools():
 def image_tools():
     return render_template("image_tools.html")
 
+# Route to shut down the server when using without console
+@app.route("/shutdown", methods=["POST"])
+def shutdown():
+    os.kill(os.getpid(), signal.SIGINT)
+    return "Shutting down..."
+
+# -----------------------------
+# Browser launcher
+# -----------------------------
+
+def open_browser():
+    webbrowser.open("http://127.0.0.1:5000")
+
 # -----------------------------
 # Entry point
 # -----------------------------
 
 if __name__ == "__main__":
+    threading.Timer(1.0, open_browser).start()
+
     app.run(
         host="127.0.0.1",
         port=5000,
         debug=True,
     )
-
