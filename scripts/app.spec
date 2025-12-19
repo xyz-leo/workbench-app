@@ -58,7 +58,7 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=True,
-    console=True,  # True if you want to run in terminal
+    console=False,  # True if you want to run in terminal
 )
 
 coll = COLLECT(
