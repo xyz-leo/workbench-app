@@ -8,7 +8,9 @@
          ============================= -->
     <section class="section">
         <h1>To-Do List</h1>
-        <p class="subtitle">Organize your tasks into workspaces and manage them easily.</p>
+        <p class="subtitle">
+            Organize your tasks into workspaces and manage them easily.
+        </p>
     </section>
 
     <!-- =============================
@@ -23,42 +25,22 @@
                     <!-- JS will populate workspace options -->
                 </select>
 
-                <button id="add-workspace" class="button" type="button">+</button>
-                <button id="remove-workspace" class="button" type="button" 
-                    onclick="if(confirm('Are you sure you want to delete this workspace?')){ removeWorkspace(); }">-</button>
+                <button
+                    id="add-workspace"
+                    class="button"
+                    type="button"
+                >
+                    +
+                </button>
+
+                <button
+                    id="remove-workspace"
+                    class="button"
+                    type="button"
+                >
+                    -
+                </button>
             </div>
-        </div>
-    </section>
-
-    <!-- =============================
-         Add Task Panel (Expandable)
-         ============================= -->
-    <section class="section">
-        <div class="panel">
-            <details>
-                <summary>
-                    <h2>Add Task</h2>
-                </summary>
-                
-                <!-- Add Task Form -->
-                <form id="add-task-form" style="margin-top: 1rem;">
-                    <!-- Task Title -->
-                    <div style="margin-bottom: 0.75rem;">
-                        <label for="task-title">Title</label>
-                        <input type="text" id="task-title" name="title" placeholder="Task title" required>
-                    </div>
-                    
-                    <!-- Task Description -->
-                    <div style="margin-bottom: 0.75rem;">
-                        <label for="task-desc">Description</label>
-                        <textarea id="task-desc" name="description" placeholder="Task description" rows="3"></textarea>
-                    </div>
-
-                    <!-- Submit Button -->
-                    <button type="submit" class="button">Add Task</button>
-                </form>
-
-            </details>
         </div>
     </section>
 
@@ -67,34 +49,64 @@
          ============================= -->
     <section class="section">
         <div class="panel">
-            <h2>Tasks</h2>
+            <div
+                id="tasks-header"
+                style="display: flex; align-items: center; gap: 0.5rem;"
+            >
+                <h2 style="flex: 1;">Tasks</h2>
+
+                <button
+                    id="add-task-btn"
+                    class="button"
+                    type="button"
+                >
+                    +
+                </button>
+            </div>
+
             <div id="tasks-container">
                 <!-- JS will populate tasks for the selected workspace -->
             </div>
         </div>
     </section>
 
-<!-- =============================
-     Edit Task Modal
-     ============================= -->
-  <div id="edit-task-modal" class="modal hidden">
-    <div class="modal-content">
-        <h2>Edit Task</h2>
-        <label for="edit-task-title">Title</label>
-        <input type="text" id="edit-task-title">
+    <!-- =============================
+         Edit Task Modal
+         ============================= -->
+    <div id="edit-task-modal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Edit Task</h2>
 
-        <label for="edit-task-desc">Description</label>
-        <textarea id="edit-task-desc" rows="3"></textarea>
+            <label for="edit-task-title">Title</label>
+            <input type="text" id="edit-task-title">
 
-        <div style="margin-top: 1rem; text-align: right;">
-            <button id="save-edit">Save</button>
-            <button id="cancel-edit">Cancel</button>
+            <label for="edit-task-desc">Description</label>
+            <textarea id="edit-task-desc" rows="3"></textarea>
+
+            <div style="margin-top: 1rem; text-align: right;">
+                <button id="save-edit">Save</button>
+                <button id="cancel-edit">Cancel</button>
+            </div>
         </div>
     </div>
-  </div>
+
+    <!-- =============================
+         Generic Action Modal
+         ============================= -->
+    <div id="action-modal" class="modal">
+        <div class="modal-content" style="max-width: 360px;">
+            <h2 id="action-modal-title"></h2>
+
+            <div id="action-modal-body"></div>
+
+            <div>
+                <button id="action-confirm">Confirm</button>
+                <button id="action-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
 
 </div>
-
 {% endblock %}
 
 {% block extra_scripts %}

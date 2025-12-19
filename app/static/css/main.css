@@ -638,3 +638,6 @@ details[open] summary {
     transform: translateY(-1px);
 }
 
+#tasks-container {
+    margin-top: 1.25rem;
+}
