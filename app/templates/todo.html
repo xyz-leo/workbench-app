@@ -3,22 +3,81 @@
 {% block content %}
 <div class="container">
 
+    <!-- =============================
+         Page Title
+         ============================= -->
     <section class="section">
-        <h1>To-Do</h1>
-        <p class="subtitle">Manage your tasks locally in JSON format.</p>
+        <h1>To-Do List</h1>
+        <p class="subtitle">Organize your tasks into workspaces and manage them easily.</p>
     </section>
 
+    <!-- =============================
+         Workspace Selector Panel
+         ============================= -->
     <section class="section">
         <div class="panel">
-            <p>Add tasks below:</p>
-            <input type="text" id="todo-input" placeholder="New task" class="button">
-            <button id="add-todo" class="button">Add Task</button>
+            <h2>Workspaces</h2>
 
-            <ul id="todo-list">
-            </ul>
+            <div id="workspace-selector-panel">
+                <select id="workspace-selector" style="flex: 1;">
+                    <!-- JS will populate workspace options -->
+                </select>
+
+                <button id="add-workspace" class="button" type="button">+</button>
+                <button id="remove-workspace" class="button" type="button" 
+                    onclick="if(confirm('Are you sure you want to delete this workspace?')){ removeWorkspace(); }">-</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- =============================
+         Add Task Panel (Expandable)
+         ============================= -->
+    <section class="section">
+        <div class="panel">
+            <details>
+                <summary>
+                    <h2>Add Task</h2>
+                </summary>
+                
+                <!-- Add Task Form -->
+                <form id="add-task-form" style="margin-top: 1rem;">
+                    <!-- Task Title -->
+                    <div style="margin-bottom: 0.75rem;">
+                        <label for="task-title">Title</label>
+                        <input type="text" id="task-title" name="title" placeholder="Task title" required>
+                    </div>
+                    
+                    <!-- Task Description -->
+                    <div style="margin-bottom: 0.75rem;">
+                        <label for="task-desc">Description</label>
+                        <textarea id="task-desc" name="description" placeholder="Task description" rows="3"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="button">Add Task</button>
+                </form>
+
+            </details>
+        </div>
+    </section>
+
+    <!-- =============================
+         Tasks Panel
+         ============================= -->
+    <section class="section">
+        <div class="panel">
+            <h2>Tasks</h2>
+            <div id="tasks-container">
+                <!-- JS will populate tasks for the selected workspace -->
+            </div>
         </div>
     </section>
 
 </div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/todo.js') }}"></script>
 {% endblock %}
 

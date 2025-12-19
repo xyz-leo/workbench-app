@@ -484,3 +484,67 @@ details[open] summary {
     margin-bottom: 1rem;
 }
 
+/* =============================
+   To do Add Task
+   ============================= */
+/* Text inputs (Title) */
+#task-title {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+/* Textarea (Description) */
+#task-desc {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+    resize: vertical; /* allow vertical resizing */
+    min-height: 60px;
+}
+
+/* =============================
+   To do Workspace Panel Styling
+   ============================= */
+
+/* Workspace container panel */
+#workspace-selector-panel {
+    max-width: 50%;      /* Limit width */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+}
+
+/* Workspace dropdown */
+#workspace-selector {
+    flex: 1;
+    padding: 0.4rem 0.5rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    font-family: var(--font-family);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+/* Workspace buttons (+ and -) */
+#workspace-selector-panel .button {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+}
+
