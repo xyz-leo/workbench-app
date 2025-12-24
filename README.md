@@ -114,8 +114,9 @@ Frontend and backend communicate exclusively through HTTP requests, even when ru
 ### Backend
 - **Python**
 - **Flask** — HTTP server and API
-- **Pillow** — image processing
+- **Pillow** — Image processing
 - **pypdf** — PDF manipulation
+- **moviepy** - Movie processing
 
 ### Frontend
 - **HTML**
