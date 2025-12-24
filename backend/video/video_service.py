@@ -14,14 +14,14 @@ def process_video(
 
     temp_video = output_path.with_name("temp_video.mp4")
 
-    # 1️⃣ Merge se necessário
+    # 1️⃣ Merge if necessary
     if len(video_paths) > 1:
         merge_videos(video_paths, temp_video)
         base_video = temp_video
     else:
         base_video = video_paths[0]
 
-    # 2️⃣ Add music se existir
+    # 2️⃣ Add music if exists
     if music_path:
         add_music(
             video_path=base_video,
@@ -31,6 +31,6 @@ def process_video(
             volume=volume,
         )
     else:
-        # sem música, só move/copia
+        # without music
         base_video.rename(output_path)
 
