@@ -62,6 +62,39 @@ Key features include:
 - Filter addition (B&W, Sepia, Invert colors, Blur)
 - All processing done locally
 
+## Video Tools
+
+The **Video Tools** feature provides simple, server-side video processing through a web interface. It allows users to merge multiple videos into a single file and optionally add background music, without previews or in-browser editing.
+
+The workflow is request-based and fully stateless. Each operation is processed in an isolated temporary directory and discarded after the response is sent.
+
+### Supported operations
+
+- Merge up to **3 MP4 videos** into a single video  
+- Optionally add a background music track  
+- Control music start time (in seconds)  
+- Adjust music volume  
+
+Videos are merged **in alphabetical order by filename**. Users can control the merge order by renaming the files before uploading. Maybe in the future I could add a better control to the merge system.
+
+### How it works
+
+1. The frontend collects video files and optional music parameters and sends them as `multipart/form-data`.
+2. The backend saves all files into a temporary, request-scoped directory.
+3. Videos are merged if more than one is provided.
+4. If a music file is present, it is applied to the final video.
+5. The resulting file is returned as a download.
+6. All temporary files are cleaned up automatically after the response.
+
+### Design notes
+
+- No persistent storage is used.
+- No video previews or timeline editing are performed.
+- Processing is synchronous and deterministic.
+- The feature is designed for simplicity and reliability, not full video editing.
+
+This approach keeps the system lightweight while still supporting common, practical video operations.
+
 ---
 
 ## Architecture

@@ -20,6 +20,8 @@ sys.path.append(str(PROJECT_ROOT))
 import backend.pdf.routes as pdf_routes
 import backend.image.routes as image_routes
 import backend.todo.routes as todo_routes
+import backend.video.routes as video_routes
+
 # Ensure runtime directories exist
 DATA_DIR.mkdir(exist_ok=True)
 TEMP_DIR.mkdir(exist_ok=True)
@@ -40,6 +42,7 @@ app = Flask(
 app.register_blueprint(pdf_routes.pdf_bp)      # PDF processing blueprint
 app.register_blueprint(image_routes.image_bp)  # Image processing blueprint
 app.register_blueprint(todo_routes.todo_bp)    # To do processing blueprint
+app.register_blueprint(video_routes.video_bp)  # Video processing blueprint
 
 # -----------------------------
 # Routes
@@ -60,6 +63,10 @@ def pdf_tools():
 @app.route("/image-tools")
 def image_tools():
     return render_template("image_tools.html")
+
+@app.route("/video-tools")
+def video_tools():
+    return render_template("video_tools.html")
 
 # Route to shut down the server when using without console
 @app.route("/shutdown", methods=["POST"])
